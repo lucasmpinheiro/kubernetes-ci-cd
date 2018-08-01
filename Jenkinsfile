@@ -11,7 +11,7 @@ pipeline {
         stage('CI Build and push snapshot') {
             steps {
                 sh "git rev-parse --short HEAD > commit-id"
-                image = docker.build(imageName, "./applications/hello-kenzan")
+                def image = docker.build(imageName, "./applications/hello-kenzan")
                 image.push()
             }
         }
